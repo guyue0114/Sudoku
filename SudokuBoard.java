@@ -22,3 +22,39 @@ public class SudokuBoard {
         }
     }
 
+   
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        for (int row = 0; row < 9; row++) {
+            if (row % 3 == 0 && row != 0) {
+                sb.append("------+-------+------\n");
+            }
+            for (int col = 0; col < 9; col++) {
+                if (col % 3 == 0 && col != 0) {
+                    sb.append("| ");
+                }
+                sb.append(board[row][col] + " ");
+            }
+            sb.append("\n");
+        }
+        return sb.toString();
+    }
+}
+
+
+
+/*
+# PROGRAM OUTPUT
+
+2 . . | 1 . 5 | . . 3 
+. 5 4 | . . . | 7 1 . 
+. 1 . | 2 . 3 | . 8 . 
+------+-------+------
+6 . 2 | 8 . 7 | 3 . 4 
+. . . | . . . | . . . 
+1 . 5 | 3 . 9 | 8 . 6 
+------+-------+------
+. 2 . | 7 . 1 | . 6 . 
+. 8 1 | . . . | 2 4 . 
+7 . . | 4 . 2 | . . 1 
+*/
