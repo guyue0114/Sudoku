@@ -1,24 +1,24 @@
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
+import java.io.*;
+import java.util.*;
 
 public class SudokuBoard {
     private char[][] board;
 
     public SudokuBoard(String filename) {
-        board = new char[9][9];  
+        board = new char[9][9];
         try {
-            Scanner input = new Scanner(new File(filename));
-            for (int i = 0; i < 9; i++) {
-                String line = input.nextLine();
-                for (int j = 0; j < 9; j++) {
-                    board[i][j] = line.charAt(j);  
+            Scanner scanner = new Scanner(new File(filename));
+            int row = 0;
+            while (scanner.hasNextLine() && row < 9) {
+                String line = scanner.nextLine();
+                for (int col = 0; col < 9; col++) {
+                    board[row][col] = line.charAt(col);
                 }
+                row++;
             }
-            input.close();
+            scanner.close();
         } catch (FileNotFoundException e) {
-            System.out.println("File not found.");
+            System.out.println("File not found: " + filename);
         }
     }
-
 
